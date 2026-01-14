@@ -21,7 +21,6 @@ def weather():
         "units": "metric"
     }
 
-    url = ""
     response = requests.get(url, params=params)
     data = response.json()
 
