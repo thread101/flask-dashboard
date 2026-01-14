@@ -18,3 +18,16 @@ header {
 header h4 {
     margin-left: 1vw;
 }
+
+section form {
+    margin-left: 10px;
+    display: flex;
+    width: fit-content;
+}
+
+section form input {
+    font-size: larger;
+    border-radius: 12px;
+    margin: 5px;
+    padding: 3px;
+}
