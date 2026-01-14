@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 import requests
 
 with open(".env/api-key.pub", "r") as f:
@@ -8,8 +8,7 @@ app=Flask(__file__)
 
 @app.route("/")
 def dashboard():
-    # return "Welcome to our webpage"
-    return render_template("app.html")
+    return render_template("index.html", title="Weather app")
 
 @app.route("/weather", methods=["GET"])
 def weather():
@@ -36,4 +35,4 @@ def weather():
             "Error" : "There was an issue processing your request"
         }
     
-    return data
+    return render_template("index.html", title=f"Results ({city})", data=data)
