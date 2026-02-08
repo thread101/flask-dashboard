@@ -35,4 +35,5 @@ def weather():
             "Error" : "There was an issue processing your request"
         }
     
-    return render_template("index.html", title=f"Results ({city})", data=data)
+    return render_template("layout.html", weather=data)
+
