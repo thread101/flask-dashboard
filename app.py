@@ -4,11 +4,13 @@ import requests
 with open(".env/api-key.pub", "r") as f:
     KEY = f.readline()
 
-app=Flask(__file__)
+app = Flask(__file__)
+
 
 @app.route("/")
 def dashboard():
     return render_template("index.html", title="Weather app")
+
 
 @app.route("/weather", methods=["GET"])
 def weather():
@@ -17,23 +19,12 @@ def weather():
     if city in [None, ""]:
         return redirect("/")
 
-    params = {
-        "q": city,
-        "appid": KEY,
-        "units": "metric"
-    }
+    params = {"q": city, "appid": KEY, "units": "metric"}
 
     url = "https://api.openweathermap.org/data/2.5/weather"
 
-    try:
-        response = requests.get(url, params=params)
-        data = response.json()
-        response.close()
+    response = requests.get(url, params=params)
+    data = response.json()
+    response.close()
 
-    except Exception:
-        data = {
-            "Error" : "There was an issue processing your request"
-        }
-    
     return render_template("layout.html", weather=data)
-
