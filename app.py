@@ -12,7 +12,7 @@ def dashboard():
     return render_template("index.html", title="Weather app")
 
 
-@app.route("/weather", methods=["GET"])
+@app.route("/weather", methods=["POST"])
 def weather():
     city = request.args.get("city").capitalize()
 

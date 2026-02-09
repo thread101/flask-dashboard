@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </header>
 <section>
-    <form action="/weather" method="get">
+    <form action="/weather" method="POST">
         <input type="text" name="city" placeholder="City" required>
-        <input type="submit" value="search">
+        <button type="submit">Search</button>
     </form>
 </section>
 <section>
