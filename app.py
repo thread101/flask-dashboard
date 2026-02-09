@@ -14,11 +14,9 @@ def dashboard():
 
 @app.route("/weather", methods=["POST"])
 def weather():
-    city = request.args.get("city").capitalize()
-
-    if city in [None, ""]:
+    city = request.form.get("city")
+    if city in [None,""]:
         return redirect("/")
-
     params = {"q": city, "appid": KEY, "units": "metric"}
 
     url = "https://api.openweathermap.org/data/2.5/weather"
