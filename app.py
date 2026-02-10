@@ -5,11 +5,11 @@ with open(".env/api-key.pub", "r") as f:
     KEY = f.readline()
 
 app = Flask(__file__)
-
+title = "Weather app"
 
 @app.route("/")
 def dashboard():
-    return render_template("index.html", title="Weather app")
+    return render_template("index.html", title=title)
 
 
 @app.route("/weather", methods=["POST"])
@@ -25,4 +25,4 @@ def weather():
     data = response.json()
     response.close()
 
-    return render_template("layout.html", weather=data)
+    return render_template("results.html", weather=data, title=f"Weather in {city}")
